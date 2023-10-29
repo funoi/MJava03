@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+        1.必須保證 當前的文件名和接口名稱一致
+        2.namespace的命名與接口的包名一致
+        3.聲明的接口方法名與映射文件中的id名稱必須一致
+ -->
+
+<mapper namespace="com.dao.IStudent">
+
+    <select id="selectByTid" resultType="Student" parameterType="int" >
+        select * from student where tid=#{0}
+    </select>
+
+</mapper>

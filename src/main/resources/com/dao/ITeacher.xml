@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+        1.必須保證 當前的文件名和接口名稱一致
+        2.namespace的命名與接口的包名一致
+        3.聲明的接口方法名與映射文件中的id名稱必須一致
+ -->
+
+<mapper namespace="com.dao.ITeacher">
+
+    <resultMap id="mymap" type="Teacher">
+        <!-- 主键编写<id /> -->
+        <id column="id" property="id"/>  <!-- column是结果集中的id，property是type="Teacher"中的id -->
+        <result column="name" property="name"/>
+
+        <collection property="students" select="com.dao.IStudent.selectByTid" column="id"/>
+    </resultMap>
+
+
+    <!-- resultMap自定义结果集，和resultType互斥 -->
+    <select id="selectAll" resultMap="mymap">
+        select * from teacher
+    </select>
+    
+    <resultMap id="Tea" type="Teacher">
+        <id column="tid" property="id"/>
+        <result column="tname" property="name"/>
+        <collection property="students" ofType="Student">
+            <id column="sid" property="id"/>
+            <result column="sname" property="name"/>
+            <result column="tid1" property="tid"/>
+        </collection>
+    </resultMap>
+
+</mapper>

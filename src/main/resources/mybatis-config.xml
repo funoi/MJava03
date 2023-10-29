@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/><!-- 使用Mybatis控制日志操作开关 -->
+    </settings>
+    <!-- 为映射文件中的type类型 设置别名 -->
+    <typeAliases>
+        <typeAlias type="com.vo.Student" alias="Student"/>
+        <typeAlias type="com.vo.Teacher" alias="Teacher"/>
+    </typeAliases>
+
+
+    <environments default="default">
+        <environment id="default">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!-- 使用接口方式的MyBatis编程 -->
+<!--        <package name="com.dao"/>&lt;!&ndash; 注意此处的.的书写方式 &ndash;&gt;-->
+        <package name="com.dao"/>
+    </mappers>
+</configuration>
