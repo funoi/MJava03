@@ -1,2 +1,3 @@
 # MJava03
-大学java框架实验1  
+java框架实验1  
+mybatis的使用方法
